@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model ToDo
+@{
+    ViewData["Title"] = "UpdateToDo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form action="/ToDo/AddToDo" method="post">
+    
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Yapılacak İş</label>
+                <input type="text" class="form-control" id="todo" name="ToDoTitle" value="@Model.ToDoTitle"/>
+            </div>
+            <div class="col-md-3">
+                <label>İşin Açıklaması</label>
+                <input type="text" class="form-control" id="desc" name="Description" value="@Model.Description"/>
+            </div>
+            <div class="col-md-3">
+                <label>Yapıldı mı ?</label>
+                    @if (Model.IsDone == true)
+                    {
+                        <input class="custom-checkbox" type="checkbox" checked name="IsDone"/>
+                    }
+                    else
+                    {
+                        <input class="custom-checkbox" type="checkbox" name="IsDone"/>
+                    }
+            </div>
+            <div class="col-md-3">
+                <label>Yapılacak İşin Tarihi</label>
+                <input type="date" class="form-control" id="date" name="toDoDate" value="@Convert.ToDateTime(@Model.toDoDate).ToString("yyyy-MM-dd")"/>
+            </div>
+            <input style="display:none" value="@Model.ToDoID" name="ToDoID" />
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-8"></div>
+            <div class="col-md-3">
+               <button type="submit" class="btn btn-success">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

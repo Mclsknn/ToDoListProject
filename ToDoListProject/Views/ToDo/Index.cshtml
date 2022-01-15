@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model List<ToDo>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Yapılacak İş</th>
+                <th>Açıklama</th>
+                <th>Yapıldı mı</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                <td><label>@item.ToDoTitle</label></td>
+                <td><label>@item.Description</label></td>
+                @if(@item.IsDone == true){
+                    <td><input type="checkbox"  checked disabled/></td>
+                }
+                else{
+                    <td><input  type="checkbox" /></td>
+                }
+                <td>
+                    <a href="/ToDo/UpdateToDo/@item.ToDoID" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a href="/ToDo/DoneToDo/@item.ToDoID" class="btn btn-success btn-sm">Yapıldı</a>
+                    <a href="/ToDo/DeleteToDo/@item.ToDoID" class="btn btn-danger btn-sm">Sil</a>
+                    
+                </td>
+            </tr>
+            }
+           
+        </tbody>
+
+    </table>
+</div>
+

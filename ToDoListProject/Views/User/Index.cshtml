@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete;
+@model User;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row mt-2">
+
+            <div class="col-md-3">
+                <label>İsim</label>
+                <input class="form-control" value="@Model.UserName" disabled type="text" />
+            </div>
+            <div class="col-md-3">
+                <label>Soy İsim</label>
+                <input class="form-control" value="@Model.UserLastName" disabled />
+            </div>
+            <div class="col-md-3">
+                <label>Telefon</label>
+                <input class="form-control" value="@Model.UserPhone" disabled />
+            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <label>Doğum Günü</label>
+                <input class="form-control" value="@Model.UserBirthDate" disabled type="date" />
+            </div>
+            <div class="col-md-3">
+                <label>Cinsiyet</label>
+                <select class="form-control" selected="@Model.UserGender">
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label>Adres</label>
+                <textarea class="form-control" rows="4" cols="50" >@Model.UserAddress</textarea>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-1 mt-2">
+                <input type="button" class="btn btn-success" value="Kaydet"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+

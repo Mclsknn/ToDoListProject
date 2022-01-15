@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model ToDo
+@{
+    ViewData["Title"] = "AddToDo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(@Model != null){ <input id="gizli" value="@Model.ToDoID"/> }
+
+
+<form action="/ToDo/AddToDo" method="post">
+    
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Yapılacak İş</label>
+                <input type="text" class="form-control" id="todo" name="ToDoTitle"/>
+                @Html.ValidationMessageFor(x => x.ToDoTitle)
+            </div>
+            <div class="col-md-3">
+                <label>İşin Açıklaması</label>
+                <input type="text" class="form-control" id="desc" name="Description"/>
+                @Html.ValidationMessageFor(x => x.Description)
+            </div>
+            <div class="col-md-3">
+                <label>Yapılacak İşin Tarihi</label>
+                <input type="date" class="form-control" id="date" name="toDoDate"/>
+                @Html.ValidationMessageFor(x => x.toDoDate)
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-8"></div>
+            <div class="col-md-3">
+               <button type="submit" class="btn btn-success">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+@section scripts{
+<script>
+
+</script>}

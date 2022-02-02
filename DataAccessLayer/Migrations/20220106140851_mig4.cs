@@ -10,13 +10,13 @@ namespace DataAccessLayer.Migrations
                 name: "UserMail",
                 table: "Users",
                 type: "nvarchar(max)",
-                nullable: true);
+                nullable: false);
 
             migrationBuilder.AddColumn<string>(
                 name: "UserPassword",
                 table: "Users",
                 type: "nvarchar(max)",
-                nullable: true);
+                nullable: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

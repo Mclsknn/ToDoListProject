@@ -12,12 +12,15 @@ namespace BusinessLayer.ValidationRules
     {
         public ToDoValidator()
         {
-            RuleFor(x => x.ToDoTitle).NotEmpty().WithMessage("Yapılacak iş kısmı boş geçilemez");
-            RuleFor(x => x.Description).NotEmpty().WithMessage("Yapılacak işin açıklama kısmı boş geçilemez");
-            RuleFor(x => x.ToDoTitle).MinimumLength(2).WithMessage("Yapılacak iş 2 harf den az olamaz");
-            RuleFor(x => x.Description).MinimumLength(2).WithMessage("Açıklama 2 harf den az olamaz");
-            RuleFor(x => x.toDoDate)
-           .NotEmpty().GreaterThan(DateTime.Now)
+            RuleFor(x => x.ToDoTitle).NotEmpty()
+                .WithMessage("Yapılacak iş kısmı boş geçilemez");
+            RuleFor(x => x.Description).NotEmpty()
+                .WithMessage("Yapılacak işin açıklama kısmı boş geçilemez");
+            RuleFor(x => x.ToDoTitle).MinimumLength(2)
+                .WithMessage("Yapılacak iş 2 harf den az olamaz");
+            RuleFor(x => x.Description).MinimumLength(2)
+                .WithMessage("Açıklama 2 harf den az olamaz");
+            RuleFor(x => x.toDoDate).NotEmpty().GreaterThan(DateTime.Now)
            .WithMessage("Geçmiş tarih girilemez");
             
         }

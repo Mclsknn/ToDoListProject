@@ -43,8 +43,10 @@ namespace ToDoListProject
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
             services.AddMvc();
+
             services.AddAuthentication(
-               CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => {
+               CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+               {
                    x.LoginPath = "/Login/Index";
                });
         }
@@ -67,15 +69,16 @@ namespace ToDoListProject
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
-         
             app.UseAuthentication();
             app.UseAuthorization();
+      
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }

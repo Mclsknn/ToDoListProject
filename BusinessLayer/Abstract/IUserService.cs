@@ -13,6 +13,7 @@ namespace BusinessLayer.Abstract
         void UpdateUser(User us);
         void DeleteUser(User us);
         User GetByIDUser(int id);
+        User GetUserByMail(string mail);
         List<User> GetAllUser();
     }
 }

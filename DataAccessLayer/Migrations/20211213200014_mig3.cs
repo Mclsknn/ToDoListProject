@@ -11,21 +11,18 @@ namespace DataAccessLayer.Migrations
                 name: "UserAddress",
                 table: "Users",
                 type: "nvarchar(max)",
-                nullable: true);
-
+                nullable: false);
             migrationBuilder.AddColumn<DateTime>(
                 name: "UserBirthDate",
                 table: "Users",
                 type: "datetime2",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
             migrationBuilder.AddColumn<string>(
                 name: "UserGender",
                 table: "Users",
                 type: "nvarchar(max)",
-                nullable: true);
-
+                nullable: false);
             migrationBuilder.AddColumn<bool>(
                 name: "IsDone",
                 table: "ToDos",
@@ -39,15 +36,12 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.DropColumn(
                 name: "UserAddress",
                 table: "Users");
-
             migrationBuilder.DropColumn(
                 name: "UserBirthDate",
                 table: "Users");
-
             migrationBuilder.DropColumn(
                 name: "UserGender",
                 table: "Users");
-
             migrationBuilder.DropColumn(
                 name: "IsDone",
                 table: "ToDos");

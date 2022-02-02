@@ -18,19 +18,16 @@ namespace DataAccessLayer.EntityFramework
             c.Remove(toDo);
             c.SaveChanges();
         }
-
         public ToDo GetByID(Expression<Func<ToDo, bool>> filter)
         {
             using var c = new Context();
             return c.Set<ToDo>().Where(filter).FirstOrDefault();
         }
-
         public List<ToDo> GetListAll()
         {
             using var c = new Context();
             return c.Set<ToDo>().ToList();
         }
-
         public void Insert(ToDo toDo)
         {
             using var c = new Context();
@@ -42,7 +39,6 @@ namespace DataAccessLayer.EntityFramework
             using var c = new Context();
             return c.Set<ToDo>().Where(filter).ToList();
         }
-
         public void Update(ToDo toDo)
         {
             using var c = new Context();

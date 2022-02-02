@@ -1,8 +1,6 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="~/Login_v1/css/main.css">
 </head>
 <body>
-    @*ÜYE GİRİŞ EKRANI *@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -33,7 +30,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="UserMail" placeholder="E-mail">
+                        <input class="input100" type="text" name="UserMail" placeholder="E-mail" id="userMail">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -41,7 +38,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="UserPassword" placeholder="Şifre">
+                        <input class="input100" type="password" name="UserPassword" placeholder="Şifre" id="userPassword">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -49,7 +46,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button id="btnGiris" class="login100-form-btn submit" >
+                        <button id="btnGiris" class="login100-form-btn " >
                             Giriş Yap
                         </button>
                     </div>
@@ -65,14 +62,14 @@
         </div>
     </div>
 
-
     <script src="~/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="~/Login_v1/vendor/bootstrap/js/popper.js"></script>
     <script src="~/Login_v1/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Login_v1/vendor/select2/select2.min.js"></script>
     <script src="~/Login_v1/vendor/tilt/tilt.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-         
+               
 		$('.js-tilt').tilt({
 			scale: 1.1
 		});

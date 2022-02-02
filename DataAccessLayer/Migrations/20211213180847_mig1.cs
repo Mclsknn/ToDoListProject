@@ -8,29 +8,23 @@ namespace DataAccessLayer.Migrations
         {
             migrationBuilder.CreateTable(
                 name: "Users",
-                columns: table => new
-                {
+                columns: table => new {
                     UserID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserLastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserPhone = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserPhone = table.Column<string>(type: "nvarchar(max)", nullable: false)  },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserID);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "ToDos",
-                columns: table => new
-                {
+            migrationBuilder.CreateTable(   name: "ToDos",
+                columns: table => new {
                     ToDoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ToDoTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserID = table.Column<int>(type: "int", nullable: false)
-                },
+                    ToDoTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false) },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ToDos", x => x.ToDoID);
@@ -41,20 +35,15 @@ namespace DataAccessLayer.Migrations
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateIndex(
                 name: "IX_ToDos_UserID",
                 table: "ToDos",
                 column: "UserID");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ToDos");
-
-            migrationBuilder.DropTable(
-                name: "Users");
+            migrationBuilder.DropTable(  name: "ToDos");
+            migrationBuilder.DropTable( name: "Users");
         }
     }
 }

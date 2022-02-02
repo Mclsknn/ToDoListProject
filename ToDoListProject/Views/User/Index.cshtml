@@ -5,49 +5,87 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-body">
-        <div class="row mt-2">
+<form action="/User/EditUser/" method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="row mt-2">
+                <div class="col-md-4">
+                    <label>İsim</label>
+                    <input class="form-control" value="@Model.UserName" type="text" name="UserName" />
+                </div>
+                <div class="col-md-4">
+                    <label>Soy İsim</label>
+                    <input class="form-control" value="@Model.UserLastName" name="UserLastName" />
+                </div>
+                <div class="col-md-4">
+                    <label>Telefon</label>
+                    <input class="form-control" value="@Model.UserPhone" name="UserPhone" />
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <label>Doğum Günü</label>
+                    <input class="form-control" value="@Convert.ToDateTime(@Model.UserBirthDate).ToString("yyyy-MM-dd")" type="date" name="UserBirthDate" />
+                </div>
 
-            <div class="col-md-3">
-                <label>İsim</label>
-                <input class="form-control" value="@Model.UserName" disabled type="text" />
-            </div>
-            <div class="col-md-3">
-                <label>Soy İsim</label>
-                <input class="form-control" value="@Model.UserLastName" disabled />
-            </div>
-            <div class="col-md-3">
-                <label>Telefon</label>
-                <input class="form-control" value="@Model.UserPhone" disabled />
-            </div>
-
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-3">
-                <label>Doğum Günü</label>
-                <input class="form-control" value="@Model.UserBirthDate" disabled type="date" />
-            </div>
-            <div class="col-md-3">
-                <label>Cinsiyet</label>
-                <select class="form-control" selected="@Model.UserGender">
-                    <option value="Erkek">Erkek</option>
-                    <option value="Kadın">Kadın</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label>Adres</label>
-                <textarea class="form-control" rows="4" cols="50" >@Model.UserAddress</textarea>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-7"></div>
-            <div class="col-md-1 mt-2">
-                <input type="button" class="btn btn-success" value="Kaydet"/>
+                <div class="col-md-4">
+                    @Html.Label("Cinsiyet")
+                    @Html.DropDownListFor(x => x.UserGender, (List<SelectListItem>)ViewBag.c, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    <label>E-Mail Hesabı</label>
+                    <input class="form-control" value="@Model.UserMail" name="UserMail" />
+                </div>
+            </div> 
+            <div class="row mt-3"> 
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <label>Adres</label>
+                    <textarea class="form-control" rows="4" cols="50" name="UserAddress">@Model.UserAddress</textarea>
+                </div>
+                <div class="col-md-4 mt-4 mr-0">
+                    <button class="btn btn-success" type="submit">Kaydet</button>
+                </div>
             </div>
         </div>
     </div>
+    <input type="text" value="@Model.UserID" id="gizliInput" style="visibility:hidden"/>
+</form>
+<div class="row">
+    <div class="col-md-8"></div>
+    <a class="btn btn-info" href="/User/UserChangePassword" type="button" >Şifreyi Değiştir</a>
+                    <button class="btn btn-danger ml-1" id="btnDeleteUser">Hesabı Sil</button>
 </div>
 
+@section Scripts{
+<script type="text/javascript">
+     $("#btnDeleteUser").click(function (){
+          Swal.fire({
+                     title: 'Hesabı silmek istediğinize eminmisiniz ?',
+                     text: "Bu işlemi geri alamazsınız!",
+                     icon: 'warning',
+                     showCancelButton: true,
+                     confirmButtonColor: '#3085d6',
+                     cancelButtonColor: '#d33',
+                     confirmButtonText: 'Evet',
+                     cancelButtonText:"Vazgeç"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            let obje = { id : $("#gizliInput").val() };
+                            $.ajax({
+                                     type:"post",
+                                     url:"/User/DeleteUser",
+                                     data:obje ,
+                                   });  
+                             };
+                            Swal.fire({
+                                     icon: 'success',
+                                     title: 'İşlem Başarılı',
+                                     showConfirmButton: true,
+                                     timer: 1500
+                                     });
 
+                    });
+        });
+</script>
+}

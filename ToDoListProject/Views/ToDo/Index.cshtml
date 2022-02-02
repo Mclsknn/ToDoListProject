@@ -11,6 +11,7 @@
             <tr>
                 <th>Yapılacak İş</th>
                 <th>Açıklama</th>
+                <th>Yapılacağı Tarih</th>
                 <th>Yapıldı mı</th>
                 <th>-</th>
             </tr>
@@ -21,11 +22,12 @@
                 <tr>
                 <td><label>@item.ToDoTitle</label></td>
                 <td><label>@item.Description</label></td>
+                <td><label>@Convert.ToDateTime(@item.toDoDate).ToShortDateString()</label></td>
                 @if(@item.IsDone == true){
-                    <td><input type="checkbox"  checked disabled/></td>
+                    <td><input type="checkbox" class="custom-checkbox ml-2 mt-1" style="width:25px; height:25px;"  checked disabled/></td>
                 }
                 else{
-                    <td><input  type="checkbox" /></td>
+                    <td><input  type="checkbox" class="custom-checkbox ml-2 mt-1" style="width:25px; height:25px;" /></td>
                 }
                 <td>
                     <a href="/ToDo/UpdateToDo/@item.ToDoID" class="btn btn-warning btn-sm">Düzenle</a>

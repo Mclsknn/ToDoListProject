@@ -16,5 +16,6 @@ namespace DataAccessLayer.Abstract
         List<User> GetListAll();
         User GetByID(int id);
         List<User> GetListAll(Expression<Func<User, bool>> filter);
+        User GetUserByMail(string mail);
     }
 }

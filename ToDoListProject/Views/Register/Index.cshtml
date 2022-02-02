@@ -1,8 +1,7 @@
-﻿
+﻿@model EntityLayer.Concrete.User
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,66 +18,88 @@
     <link rel="stylesheet" type="text/css" href="~/Login_v1/css/main.css">
 </head>
 <body>
-
-    <div class="limiter">
+     <div class="limiter">
         <div class="container-login100" >
-            <div class="wrap-login100 " >
-                <div class="login100-pic js-tilt "  data-tilt>
-                    <img src="~/Login_v1/images/img-01.png" alt="IMG" style="margin-top: 7rem;">
-                </div>
-
-                <form class="login100-form validate-form " action="/Register/Index" method="post">
+            <div class="wrap-login100 "  style="width:auto; height: 700px;">
+                <form class="validate-form " action="/Register/Index" method="post" style="">
                     <span class="login100-form-title" >
                         Kayıt Ol
                     </span>
-
-                    <div class="wrap-input100 validate-input" data-validate="E-mail boş geçilemez">
+                    <div class="row">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="İsim gerekli">
+                        <input class="input100" type="text" name="UserName" placeholder="İsim">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-male" aria-hidden="true"></i>
+                        </span>
+                        
+                    </div>
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="Soyisim gerekli">
+                        <input class="input100" type="text" name="UserLastName" placeholder="Soyisim">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-male" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="E-mail boş geçilemez">
                         <input class="input100" type="text" name="UserMail" placeholder="E-mail">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        
                     </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Şifre">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="Şifre gerekli">
+                        <input class="input100" type="password" name="UserPassword" placeholder="Şifre">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="text" name="" placeholder="Telefon">
+                </div>
+                <div class="row">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="Telefon gerekli">
+                        <input class="input100" type="text" name="UserPhone" placeholder="Telefon">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="text" name="" placeholder="Cinsiyet">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="Cinsiyet gerekli">
+                        @Html.DropDownListFor(x=> x.UserGender,(List<SelectListItem>)ViewBag.cv, new {@class = "input100" })
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-male" aria-hidden="true"></i>
+                            <i class="fa fa-venus-mars" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="text" name="" placeholder="Doğum Tarihi">
+                </div>
+                <div class="row">
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="E-mail boş geçilemez">
+                        <input class="input100" type="text" name="UserAddress" placeholder="Adres">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-male" aria-hidden="true"></i>
+                            <i class="fa fa-address-book" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <div class="wrap-input100 validate-input col-md-6" data-validate="Password is required">
+                        <input class="input100" type="date" name="UserBirthDate" placeholder="Doğum Tarihi">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn">
                             Kayıt Ol
                         </button>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
+
     <script src="~/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="~/Login_v1/vendor/bootstrap/js/popper.js"></script>
     <script src="~/Login_v1/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -92,12 +113,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-@*  <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="text" name="" placeholder="Doğum Tarihi">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-male" aria-hidden="true"></i>
-                        </span>
-                    </div>
-*@

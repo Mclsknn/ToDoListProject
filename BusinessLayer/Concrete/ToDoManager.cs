@@ -20,22 +20,18 @@ namespace BusinessLayer.Concrete
         {
             _toDoDal.Insert(td);
         }
-
         public void DeleteToDo(ToDo td)
         {
             _toDoDal.Delete(td);
         }
-
         public List<ToDo> GetAllToDo(int userID)
         {
             return _toDoDal.GetListAll(x=> x.UserID == userID);
         }
-
         public ToDo GetByIDToDo(int id, int userID)
         {
             return _toDoDal.GetByID(x => x.UserID == userID && x.ToDoID == id);
         }
-
         public void UpdateToDo(ToDo td)
         {
             _toDoDal.Update(td);

@@ -13,25 +13,25 @@
 <div class="card">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label>Yapılacak İş</label>
                 <input type="text" class="form-control" id="todo" name="ToDoTitle"/>
                 @Html.ValidationMessageFor(x => x.ToDoTitle)
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label>İşin Açıklaması</label>
                 <input type="text" class="form-control" id="desc" name="Description"/>
                 @Html.ValidationMessageFor(x => x.Description)
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label>Yapılacak İşin Tarihi</label>
                 <input type="date" class="form-control" id="date" name="toDoDate"/>
                 @Html.ValidationMessageFor(x => x.toDoDate)
             </div>
-        </div>
+        </div><br />
         <div class="row mt-2">
-            <div class="col-md-8"></div>
-            <div class="col-md-3">
+            <div class="col-md-10"></div>
+            <div class="col-md-1">
                <button type="submit" class="btn btn-success">Kaydet</button>
             </div>
         </div>

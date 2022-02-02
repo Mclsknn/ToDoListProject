@@ -18,19 +18,16 @@ namespace DataAccessLayer.EntityFramework
             c.Remove(user);
             c.SaveChanges();
         }
-
         public User GetByID(int id)
         {
             using var c = new Context();
             return c.Set<User>().Find(id);
         }
-
         public List<User> GetListAll()
         {
             using var c = new Context();
             return c.Set<User>().ToList();
         }
-
         public void Insert(User user)
         {
             using var c = new Context();
@@ -42,13 +39,16 @@ namespace DataAccessLayer.EntityFramework
             using var c = new Context();
             return c.Set<User>().Where(filter).ToList();
         }
-
         public void Update(User user)
         {
             using var c = new Context();
             c.Update(user);
             c.SaveChanges();
         }
-
+        public User GetUserByMail(string mail)
+        {
+            using var c = new Context();
+            return c.Set<User>().Where(x=> x.UserMail == mail).FirstOrDefault();
+        }
     }
 }
